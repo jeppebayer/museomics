@@ -516,7 +516,8 @@ def extract_unmapped_reads(alignment_file: str, sample_name: str, output_directo
 		--threads {options['cores'] - 1} \
 		--require-flags 4 \
 		--bam \
-		--output {output_directory}/{sample_name}.unmapped.bam
+		--output {output_directory}/{sample_name}.unmapped.bam \
+		{alignment_file}
 
 	samtools index \
 		--threads {options['cores'] - 1} \
