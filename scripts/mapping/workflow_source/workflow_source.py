@@ -54,8 +54,8 @@ def mapping_resequencing_data_museomics_workflow(config_file: str = glob.glob('*
 	between_time_qualimap = []
 
 	for TIME in SAMPLE_LISTS:
-		TIME_PERIOD: int = time['time_period']
-		DATA_TYPE: str = [identifier.strip() for identifier in time['data_type'].split(sep=',')]
+		TIME_PERIOD: int = TIME['time_period']
+		DATA_TYPE: str = [identifier.strip() for identifier in TIME['data_type'].split(sep=',')]
 		between_population_qualimap = []
 		for POPULATION in TIME['populations']:
 			if not POPULATION['sample_folder_list']:
@@ -167,7 +167,7 @@ def mapping_resequencing_data_museomics_workflow(config_file: str = glob.glob('*
 					template=extract_unmapped_reads(
 						alignment_file=mark_duplicates.outputs['markdup'],
 						sample_name=sample['sample_name'],
-						output_directory=f'{OUTPUT_DIR}/{TIME_PERIOD}/{POPULATION_NAME}/{sample["sample_name"]}'
+						output_directory=f'{OUTPUT_DIR}/{TIME_PERIOD}/{POPULATION_NAME}/{sample["sample_name"]}' if OUTPUT_DIR else f'{top_dir}/{TIME_PERIOD}/{POPULATION_NAME}/{sample["sample_name"]}'
 					)
 				)
 
@@ -175,7 +175,7 @@ def mapping_resequencing_data_museomics_workflow(config_file: str = glob.glob('*
 					name=f'{sample["sample_name"].replace("-", "_")}_pre_filter_stats',
 					template=samtools_stats(
 						alignment_file=mark_duplicates.outputs['markdup'],
-						output_directory=f'{top_dir}/{TIME_PERIOD}/{POPULATION_NAME}/alignment/pre_filtering_stats/{sample["sample_name"]}'
+						output_directory=f'{top_dir}/{TIME_PERIOD}/{POPULATION_NAME}/pre_filtering_stats/{sample["sample_name"]}'
 					)
 				)
 
@@ -184,7 +184,7 @@ def mapping_resequencing_data_museomics_workflow(config_file: str = glob.glob('*
 					template=samtools_filter(
 						alignment_file=mark_duplicates.outputs['markdup'],
 						sample_name=sample['sample_name'],
-						output_directory=f'{OUTPUT_DIR}/{TIME_PERIOD}/{POPULATION_NAME}/{sample["sample_name"]}',
+						output_directory=f'{OUTPUT_DIR}/{TIME_PERIOD}/{POPULATION_NAME}/{sample["sample_name"]}' if OUTPUT_DIR else f'{top_dir}/{TIME_PERIOD}/{POPULATION_NAME}/{sample["sample_name"]}',
 						flags_excluded=STF_EXCLUDE,
 						flags_required=STF_REQUIRED,
 						min_mq=STF_MIN_MQ
@@ -195,7 +195,7 @@ def mapping_resequencing_data_museomics_workflow(config_file: str = glob.glob('*
 					name=f'{sample["sample_name"].replace("-", "_")}_post_filter_stats',
 					template=samtools_stats(
 						alignment_file=filter_alignment.outputs['filtered'],
-						output_directory=f'{top_dir}/{TIME_PERIOD}/{POPULATION_NAME}/alignment/post_filtering_stats/{sample["sample_name"]}'
+						output_directory=f'{top_dir}/{TIME_PERIOD}/{POPULATION_NAME}/post_filtering_stats/{sample["sample_name"]}'
 					)
 				)
 
@@ -204,7 +204,7 @@ def mapping_resequencing_data_museomics_workflow(config_file: str = glob.glob('*
 					template=qc_qualimap(
 						alignment_file=filter_alignment.outputs['filtered'],
 						sample_name=sample['sample_name'],
-						output_directory=f'{OUTPUT_DIR}/{TIME_PERIOD}/{POPULATION_NAME}/{sample["sample_name"]}'
+						output_directory=f'{OUTPUT_DIR}/bamqc/individual/{TIME_PERIOD}/{POPULATION_NAME}/{sample["sample_name"]}' if OUTPUT_DIR else f'{top_dir}/bamqc/individual/{TIME_PERIOD}/{POPULATION_NAME}/{sample["sample_name"]}'
 					)
 				)
 
@@ -216,7 +216,7 @@ def mapping_resequencing_data_museomics_workflow(config_file: str = glob.glob('*
 				name=f'YEAR{TIME_PERIOD}_{POPULATION_NAME}_multi_qualimap',
 				template=qualimap_multi(
 					dataset=within_population_qualimap,
-					output_directory=f'{OUTPUT_DIR}/{TIME_PERIOD}/{POPULATION_NAME}',
+					output_directory=f'{OUTPUT_DIR}/bamqc/population/{TIME_PERIOD}/{POPULATION_NAME}' if OUTPUT_DIR else f'{top_dir}/bamqc/population/{TIME_PERIOD}/{POPULATION_NAME}',
 					filename=f'{TIME_PERIOD}_{POPULATION_NAME}'
 				)
 			)
@@ -225,7 +225,7 @@ def mapping_resequencing_data_museomics_workflow(config_file: str = glob.glob('*
 			name=f'YEAR{TIME_PERIOD}_multi_qualimap',
 			template=qualimap_multi(
 				dataset=between_population_qualimap,
-				output_directory=f'{OUTPUT_DIR}/{TIME_PERIOD}',
+				output_directory=f'{OUTPUT_DIR}/bamqc/year/{TIME_PERIOD}' if OUTPUT_DIR else f'{top_dir}/bamqc/year/{TIME_PERIOD}',
 				filename=TIME_PERIOD
 			)
 		)
@@ -234,7 +234,7 @@ def mapping_resequencing_data_museomics_workflow(config_file: str = glob.glob('*
 			name=f'all_time_periods_multi_qualimap',
 			template=qualimap_multi(
 				dataset=between_time_qualimap,
-				output_directory=OUTPUT_DIR,
+				output_directory=f'{OUTPUT_DIR}/bamqc/all' if OUTPUT_DIR else f'{top_dir}/bamqc/all',
 				filename='alltimeperiods'
 			)
 		)
