@@ -1,0 +1,145 @@
+# Tag identifying file association.
+TAG: jeppebayer:EcoGenetics,museomics,mapping:workflowconfiguration
+# The name of the relevant project account.
+account: EcoGenetics
+# Name of species being analyzed
+species_name: Aglais urticae
+# Path to reference genome file in FASTA format
+reference_genome_path: /faststorage/project/EcoGenetics/BACKUP/reference_genomes/Entomobrya_nicoleti/EG_EntNic_19022024_genome.fasta
+# Directory for intermediary files.
+working_directory_path: /faststorage/project/EcoGenetics/people/Jeppe_Bayer/museomics/steps
+# # Directory for final output files. (If left empty, output file will be placed within 'working_directory_path')
+output_directory_path: 
+# AdapterRemoval settings.
+adapterremoval_settings:
+  min_quality: 25
+  min_length: 20
+  adaptersequence1: AAGTCGGAGGCCAAGCGGTCTTAGGAAGACAA
+  adaptersequence2: AAGTCGGATCGTAGCCATGTCGTTCTGTGAGCCAAGGAGTTG
+# Samtools filter settings.
+filter_settings:
+  flags_excluded: 3844
+  flags_required: 
+  min_mq: 20
+# List of path to sample folders containing resequencing data.
+sample_lists:
+  -
+    time_period: 2022
+    data_type: contemporary, paired-end
+    populations:
+      -
+        population_name: Jutland
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_01_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_02_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_03_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_04_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_05_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_06_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_07_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_08_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_09_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_10_J_2022
+      -
+        population_name: Zealand
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_11_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_12_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_13_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_14_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_15_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_16_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_17_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_18_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_19_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_20_S_2022
+  -
+    time_period: 1985
+    data_type: historic, single-end
+    populations:
+      -
+        population_name: Jutland
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_21_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_22_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_23_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_24_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_25_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_26_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_27_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_28_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_29_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_30_J_1985
+      -
+        population_name: Zealand
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_31_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_32_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_33_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_34_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_35_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_36_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_37_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_38_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_39_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_40_S_1985
+  -
+    time_period: 1950
+    data_type: historic, single-end
+    populations:
+      -
+        population_name: Jutland
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_41_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_42_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_43_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_44_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_45_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_46_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_47_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_48_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_49_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_50_J_1950
+      -
+        population_name: Zealand
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_51_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_52_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_53_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_54_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_55_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_56_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_57_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_58_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_59_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_60_S_1950
+  -
+    time_period: 1915
+    data_type: historic, single-end
+    populations:
+      -
+        population_name: Jutland
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_61_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_62_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_63_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_64_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_65_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_66_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_67_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_68_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_69_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_70_J_1915
+      -
+        population_name: Zealand
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_71_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_72_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_73_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_74_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_75_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_76_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_77_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_78_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_79_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Aglais_urticae/AgUr_80_S_1915

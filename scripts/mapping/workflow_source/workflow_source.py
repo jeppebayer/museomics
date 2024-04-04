@@ -208,9 +208,9 @@ def mapping_resequencing_data_museomics_workflow(config_file: str = glob.glob('*
 					)
 				)
 
-				within_population_qualimap.append([sample["sample_name"], qualimap.outputs["raw"], sample["sample_name"]])
-				between_population_qualimap.append([sample["sample_name"], qualimap.outputs["raw"], f'{TIME_PERIOD}_{POPULATION_NAME}'])
-				between_time_qualimap.append([sample["sample_name"], qualimap.outputs["raw"], f'{TIME_PERIOD}_{POPULATION_NAME}'])
+				within_population_qualimap.append([sample["sample_name"], os.path.dirname(qualimap.outputs["raw"]), sample["sample_name"]])
+				between_population_qualimap.append([sample["sample_name"], os.path.dirname(qualimap.outputs["raw"]), f'{TIME_PERIOD}_{POPULATION_NAME}'])
+				between_time_qualimap.append([sample["sample_name"], os.path.dirname(qualimap.outputs["raw"]), f'{TIME_PERIOD}_{POPULATION_NAME}'])
 
 			within_multi_qualimap = gwf.target_from_template(
 				name=f'YEAR{TIME_PERIOD}_{POPULATION_NAME}_multi_qualimap',

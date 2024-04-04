@@ -1,0 +1,145 @@
+# Tag identifying file association.
+TAG: jeppebayer:EcoGenetics,museomics,mapping:workflowconfiguration
+# The name of the relevant project account.
+account: EcoGenetics
+# Name of species being analyzed
+species_name: Pieris napi
+# Path to reference genome file in FASTA format
+reference_genome_path: 
+# Directory for intermediary files.
+working_directory_path: /faststorage/project/EcoGenetics/people/Jeppe_Bayer/museomics/steps
+# # Directory for final output files. (If left empty, output file will be placed within 'working_directory_path')
+output_directory_path: 
+# AdapterRemoval settings.
+adapterremoval_settings:
+  min_quality: 25
+  min_length: 20
+  adaptersequence1: AAGTCGGAGGCCAAGCGGTCTTAGGAAGACAA
+  adaptersequence2: AAGTCGGATCGTAGCCATGTCGTTCTGTGAGCCAAGGAGTTG
+# Samtools filter settings.
+filter_settings:
+  flags_excluded: 3844
+  flags_required: 
+  min_mq: 20
+# List of path to sample folders containing resequencing data.
+sample_lists:
+  -
+    time_period: 2022
+    data_type: contemporary, paired-end
+    populations:
+      -
+        population_name: Jutland
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_01_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_02_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_03_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_04_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_05_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_06_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_07_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_08_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_09_J_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_10_J_2022
+      -
+        population_name: Zealand
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_11_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_12_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_13_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_14_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_15_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_16_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_17_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_18_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_19_S_2022
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_20_S_2022
+  -
+    time_period: 1985
+    data_type: historic, single-end
+    populations:
+      -
+        population_name: Jutland
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_21_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_22_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_23_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_24_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_25_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_26_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_27_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_28_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_29_J_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_30_J_1985
+      -
+        population_name: Zealand
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_31_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_32_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_33_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_34_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_35_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_36_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_37_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_38_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_39_S_1985
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_40_S_1985
+  -
+    time_period: 1950
+    data_type: historic, single-end
+    populations:
+      -
+        population_name: Jutland
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_41_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_42_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_43_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_44_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_45_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_46_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_47_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_48_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_49_J_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_50_J_1950
+      -
+        population_name: Zealand
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_51_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_52_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_53_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_54_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_55_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_56_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_57_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_58_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_59_S_1950
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_60_S_1950
+  -
+    time_period: 1915
+    data_type: historic, single-end
+    populations:
+      -
+        population_name: Jutland
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_61_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_62_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_63_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_64_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_65_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_66_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_67_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_68_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_69_J_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_70_J_1915
+      -
+        population_name: Zealand
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_71_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_72_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_73_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_74_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_75_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_76_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_77_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_78_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_79_S_1915
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Pieris_napi/PiNa_80_S_1915
