@@ -41,8 +41,6 @@ def mapping_resequencing_data_museomics_workflow(config_file: str = glob.glob('*
 	)
 	
 	top_dir = f'{WORK_DIR}/{SPECIES_NAME.replace(" ", "_")}/mapping'
-	if not OUTPUT_DIR:
-		OUTPUT_DIR = top_dir
 	
 	index = gwf.target_from_template(
 		name=f'{SPECIES_NAME.replace(" ", "_")}_index_reference',
