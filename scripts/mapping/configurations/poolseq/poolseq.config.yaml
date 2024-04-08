@@ -5,7 +5,7 @@ account: EcoGenetics
 # Name of species being analyzed
 species_name: Gonepteryx rhamni
 # Path to reference genome file in FASTA format
-reference_genome_path: /faststorage/project/EcoGenetics/BACKUP/reference_genomes/Entomobrya_nicoleti/EG_EntNic_19022024_genome.fasta
+reference_genome_path: /faststorage/project/EcoGenetics/BACKUP/reference_genomes/Gonepteryx_rhamni/EG_GonRha_22032024_genomic.fna
 # Directory for intermediary files.
 working_directory_path: /faststorage/project/EcoGenetics/people/Jeppe_Bayer/museomics/steps
 # # Directory for final output files. (If left empty, output file will be placed within 'working_directory_path')
