@@ -165,7 +165,7 @@ def mapping_resequencing_data_museomics_workflow(config_file: str = glob.glob('*
 					template=extract_unmapped_reads(
 						alignment_file=mark_duplicates.outputs['markdup'],
 						sample_name=sample['sample_name'],
-						output_directory=f'{OUTPUT_DIR}/{TIME_PERIOD}/{POPULATION_NAME}/{sample["sample_name"]}' if OUTPUT_DIR else f'{top_dir}/{TIME_PERIOD}/{POPULATION_NAME}/{sample["sample_name"]}'
+						output_directory=f'{OUTPUT_DIR}/{TIME_PERIOD}/{POPULATION_NAME}' if OUTPUT_DIR else f'{top_dir}/{TIME_PERIOD}/{POPULATION_NAME}/unmapped'
 					)
 				)
 
@@ -182,7 +182,7 @@ def mapping_resequencing_data_museomics_workflow(config_file: str = glob.glob('*
 					template=samtools_filter(
 						alignment_file=mark_duplicates.outputs['markdup'],
 						sample_name=sample['sample_name'],
-						output_directory=f'{OUTPUT_DIR}/{TIME_PERIOD}/{POPULATION_NAME}/{sample["sample_name"]}' if OUTPUT_DIR else f'{top_dir}/{TIME_PERIOD}/{POPULATION_NAME}/{sample["sample_name"]}',
+						output_directory=f'{OUTPUT_DIR}/{TIME_PERIOD}/{POPULATION_NAME}' if OUTPUT_DIR else f'{top_dir}/{TIME_PERIOD}/{POPULATION_NAME}/filtered_alignment',
 						flags_excluded=STF_EXCLUDE,
 						flags_required=STF_REQUIRED,
 						min_mq=STF_MIN_MQ
