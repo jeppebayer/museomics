@@ -1,0 +1,145 @@
+# Tag identifying file association.
+TAG: jeppebayer:EcoGenetics,museomics,mapping:workflowconfiguration
+# The name of the relevant project account.
+account: EcoGenetics
+# Name of species being analyzed
+species_name: Lycaena phlaeas
+# Path to reference genome file in FASTA format
+reference_genome_path: /faststorage/project/EcoGenetics/BACKUP/reference_genomes/Lycaena_phlaeas/GCA_905333005.2_ilLycPhla1.2_genomic.fna
+# Directory for intermediary files.
+working_directory_path: /faststorage/project/EcoGenetics/people/Jeppe_Bayer/museomics/steps
+# # Directory for final output files. (If left empty, output file will be placed within 'working_directory_path')
+output_directory_path: 
+# AdapterRemoval settings.
+adapterremoval_settings:
+  min_quality: 25
+  min_length: 20
+  adaptersequence1: AAGTCGGAGGCCAAGCGGTCTTAGGAAGACAA
+  adaptersequence2: AAGTCGGATCGTAGCCATGTCGTTCTGTGAGCCAAGGAGTTG
+# Samtools filter settings.
+filter_settings:
+  flags_excluded: 3844
+  flags_required: 
+  min_mq: 20
+# List of path to sample folders containing resequencing data.
+sample_lists:
+  -
+    time_period: 2022
+    data_type: contemporary, paired-end
+    populations:
+      -
+        population_name: Jutland
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_1
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_3
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_4
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_6
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_7
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_9
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_11
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_12
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_14
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_15
+      -
+        population_name: Zealand
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_16
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_17
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_19
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_20
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_21
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_22
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_23
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_25
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_26
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/LP23_E1
+  -
+    time_period: 1985
+    data_type: historic, single-end
+    populations:
+      -
+        population_name: Jutland
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M01
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M02
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M03
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M04
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M05
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M06
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M07
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M08
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M09
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M10
+      -
+        population_name: Zealand
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M11
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M12
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M13
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M14
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M15
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M16
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M17
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M18
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M19
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M20
+  -
+    time_period: 1950
+    data_type: historic, single-end
+    populations:
+      -
+        population_name: Jutland
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M21
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M22
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M23
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M24
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M25
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M26
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M27
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M28
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M29
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M30
+      -
+        population_name: Zealand
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M151
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M152
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M153
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M154
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M155
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M156
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M157
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M158
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M159
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M160
+  -
+    time_period: 1915
+    data_type: historic, single-end
+    populations:
+      -
+        population_name: Jutland
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M247
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M248
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M249
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M250
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M251
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M252
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M253
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M254
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M255
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M256
+      -
+        population_name: Zealand
+        sample_folder_list:
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M257
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M258
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M259
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M260
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M262
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M263
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M264
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M265
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M266
+          - /faststorage/project/EcoGenetics/BACKUP/museomics/Finland/Lycaena_phlaeas/Lph_M354
