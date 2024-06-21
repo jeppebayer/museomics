@@ -1,0 +1,51 @@
+# Tag identifying file association.
+TAG: jeppebayer:EcoGenetics,museomics,mapping:workflowconfiguration
+# The name of the relevant project account.
+account: 
+# Name of species being analyzed
+species_name: 
+# Path to reference genome file in FASTA format
+reference_genome_path: 
+# Directory for intermediary files.
+working_directory_path: 
+# # Directory for final output files. (If left empty, output file will be placed within 'working_directory_path')
+output_directory_path: /faststorage/project/EcoGenetics/general_workflow_outputs/museomics
+# AdapterRemoval settings.
+adapterremoval_settings:
+  min_quality: 25
+  min_length: 20
+  adaptersequence1: AAGTCGGAGGCCAAGCGGTCTTAGGAAGACAA
+  adaptersequence2: AAGTCGGATCGTAGCCATGTCGTTCTGTGAGCCAAGGAGTTG
+# Samtools filter settings.
+filter_settings:
+  flags_excluded: 3844
+  flags_required: 
+  min_mq: 20
+# List of path to sample folders containing resequencing data.
+# Data type: contemporary | historic | paired-end | single-end ...
+sample_lists:
+  -
+    time_period: 
+    data_type: 
+    populations:
+      -
+        population_name: 
+        sample_folder_list:
+          - 
+      -
+        population_name: 
+        sample_folder_list:
+          - 
+  -
+    time_period: 
+    data_type: 
+    populations:
+      -
+        population_name: 
+        sample_folder_list:
+          - 
+      -
+        population_name: 
+        sample_folder_list:
+          - 
+  

@@ -42,10 +42,13 @@ def index_reference_genome(reference_genome_file: str, output_directory: str):
 	
 	Template I/O::
 	
-		inputs = {}
-		outputs = {}
+		inputs = {'reference': reference_genome_file}
+		outputs = {'symlink': *, 'bwa': [*.amb, *.ann, *.pac, *.bwt, *.sa], 'fai': *.fai}
 	
-	:param
+	:param str reference_genome_file:
+		Path to reference genome.
+	:param str output_directory:
+		Path to output directory.
 	"""
 	inputs = {'reference': reference_genome_file}
 	outputs = {'symlink': f'{output_directory}/reference/{os.path.basename(reference_genome_file)}',
@@ -90,19 +93,33 @@ def index_reference_genome(reference_genome_file: str, output_directory: str):
 	"""
 	return AnonymousTarget(inputs=inputs, outputs=outputs, protect=protect, options=options, spec=spec)
 
-def name_adapterremoval_pairedend(idx: str, target: AnonymousTarget) -> str:
-	return f'adapterremoval_{os.path.basename(os.path.dirname(target.inputs["read1"][0])).replace("-", "_")}'
-
-def adapterremoval_pairedend(sample_name: str, read1_files: list, read2_files: list, output_directory: str, min_qulaity: int = 25, min_length: int = 20, adapter1: str = 'AAGTCGGAGGCCAAGCGGTCTTAGGAAGACAA', adapter2: str = 'AAGTCGGATCGTAGCCATGTCGTTCTGTGAGCCAAGGAGTTG'):
+def adapterremoval_pairedend(sample_name: str, read1_files: list, read2_files: list, output_directory: str, min_quality: int = 25, min_length: int = 20, adapter1: str = 'AAGTCGGAGGCCAAGCGGTCTTAGGAAGACAA', adapter2: str = 'AAGTCGGATCGTAGCCATGTCGTTCTGTGAGCCAAGGAGTTG'):
 	"""
 	Template: Remove remnant adapter sequences from read data using :script:`AdapterRemoval`.
 	
 	Template I/O::
 	
-		inputs = {}
-		outputs = {}
+		inputs = {'read1': read1_files, 'read2': read2_files}
+		outputs = {'pair1': *.pair1.truncated, 'pair2': *.pair2.truncated.,
+			   'collapsed': [*.collapsed, *.collapsed.truncated],
+			   'misc': [*.settings, *.singleton.truncated, *.discarded]}
 	
-	:param
+	:param str sample_name:
+		Name of sample.
+	:param list read1_files:
+		List of mate 1 read files.
+	:param lsit read2_files:
+		List of mate 2 read files.
+	:param str output_directory:
+		Path to output directory.
+	:param int min_quality:
+		Minimum quality score to include when trimming 5'/3' termini.
+	:param int min_length:
+		Minimum length of reads to keep after trimming.
+	:param str adapter1:
+		Adapter sequence expected to be found in mate 1 reads.
+	:param str adapter2:
+		Adapter sequence expected to be found in mate 2 reads.
 	"""
 	inputs = {'read1': read1_files,
 		   	  'read2': read2_files}
@@ -136,7 +153,7 @@ def adapterremoval_pairedend(sample_name: str, read1_files: list, read2_files: l
 		--file2 {' '.join(read2_files)} \
 		--adapter1 {adapter1} \
 		--adapter2 {adapter2} \
-		--minquality {min_qulaity} \
+		--minquality {min_quality} \
 		--minlength {min_length} \
 		--basename {output_directory}/adapterremoval/{sample_name}/{sample_name}.prog \
 		--trimns \
@@ -162,10 +179,21 @@ def adapterremoval_singleend(sample_name: str, read_files: list, output_director
 	
 	Template I/O::
 	
-		inputs = {}
-		outputs = {}
+		inputs = {'read': read_files}
+		outputs = {'truncated': *.pair1.truncated, 'misc': [*.settings, *.discarded]}
 	
-	:param
+	:param str sample_name:
+		Name of sample.
+	:param list read_files:
+		List of single-end read files.
+	:param str output_directory:
+		Path to output directory.
+	:param int min_quality:
+		Minimum quality score to include when trimming 5'/3' termini.
+	:param int min_length:
+		Minimum length of reads to keep after trimming.
+	:param str adapter1:
+		Adapter sequence expected to be found in reads.
 	"""
 	inputs = {'read': read_files}
 	outputs = {'truncated': f'{output_directory}/adapterremoval/{sample_name}/{sample_name}.pair1.truncated',
@@ -210,14 +238,23 @@ def adapterremoval_singleend(sample_name: str, read_files: list, output_director
 
 def alignment_pairedend(read1_file: str, read2_file: str, reference_genome_file: str, sample_name: str, output_directory: str):
 	"""
-	Template: Aligns paired-end data to reference genome.
+	Template: Align and sort paired-end data to reference genome using :script:`bwa mem`.
 	
 	Template I/O::
 	
-		inputs = {}
-		outputs = {}
+		inputs = {'read1': read1_file, 'read2': read2_file, 'reference': reference_genome_file}
+		outputs = {'alignment': *.paired_alignment.bam}
 	
-	:param
+	:param str read1_file:
+		Path to file containing mate 1 reads.
+	:param str read2_file:
+		Path to file containing mate 2 reads.
+	:param str reference_genome_file:
+		Path to indexed reference genome file.
+	:param str sample_name:
+		Name of sample.
+	:param str output_directory:
+		Path to output directory.
 	"""
 	inputs = {'read1': read1_file,
 		   	  'read2': read2_file,
@@ -263,14 +300,21 @@ def alignment_pairedend(read1_file: str, read2_file: str, reference_genome_file:
 
 def alignment_collapsed(collapsed_read_files: list, reference_genome_file: str, sample_name: str, output_directory: str):
 	"""
-	Template: Align collapsed paired-end data to reference genome.
+	Template: Align and sort collapsed paired-end data to reference genome using :script:`bwa mem`.
 	
 	Template I/O::
 	
-		inputs = {}
-		outputs = {}
+		inputs = {'collapse': collapsed_read_files, 'reference': reference_genome_file}
+		outputs = {'alignment': *collapsed_alignment.bam}
 	
-	:param
+	:param list collapsed_read_files:
+		List of collapsed paired-end read files.
+	:param str reference_genome_file:
+		Path to indexed reference genome file.
+	:param str sample_name:
+		Name of sample.
+	:param str output_directory:
+		Path to output directory.
 	"""
 	inputs = {'collapse': collapsed_read_files,
 		   	  'reference': reference_genome_file}
@@ -314,14 +358,19 @@ def alignment_collapsed(collapsed_read_files: list, reference_genome_file: str, 
 
 def merge_alignments(alignment_files: list, sample_name: str, output_directory: str):
 	"""
-	Template: Merge alignment files.
+	Template: Merge alignment files using :script:`samtools merge`.
 	
 	Template I/O::
 	
-		inputs = {}
-		outputs = {}
+		inputs = {'alignments': alignment_files}
+		outputs = {'merged': *.merged_alignment.bam}
 	
-	:param
+	:param list alignment_files:
+		List of paths to alignment files.
+	:param str sample_name:
+		Name of sample.
+	:param str output_directory:
+		Path to output directory
 	"""
 	inputs = {'alignments': alignment_files}
 	outputs = {'merged': f'{output_directory}/alignment/{sample_name}/{sample_name}.merged_alignment.bam'}
@@ -359,14 +408,27 @@ def merge_alignments(alignment_files: list, sample_name: str, output_directory: 
 
 def alignment_singleend(read_file: str, reference_genome_file: str, sample_name: str, output_directory: str, seed_length: int = 16500, missing_fraction: float = 0.1, max_gaps: int = 2):
 	"""
-	Template: Aligns single-end data to reference genome.
+	Template: Align and sort single-end data to reference genome using :script:`bwa aln`.
 	
 	Template I/O::
 	
-		inputs = {}
-		outputs = {}
+		inputs = {'read': read_file, 'reference': reference_genome_file}
+		outputs = {'alignment': *.single_alignment.bam}
 	
-	:param
+	:param str read_file:
+		Path to single-end read file.
+	:param str reference_genome_file:
+		Path to indexed reference genome file.
+	:param str sample_name:
+		Name of sample.
+	:param str output_directory:
+		Path to output directory.
+	:param int seed_length:
+		Take the first INT subsequence as seed. If INT is larger than the query sequence, seeding will be disabled.
+	:param float missing_fraction:
+		The fraction of missing alignments given 2% uniform base error rate.
+	:param int max_gaps:
+		Maximum number of gap opens.
 	"""
 	inputs = {'read': read_file,
 			  'reference': reference_genome_file}
@@ -417,14 +479,19 @@ def alignment_singleend(read_file: str, reference_genome_file: str, sample_name:
 
 def mark_duplicates_samtools(alignment_file: str, sample_name: str, output_directory: str):
 	"""
-	Template: 
+	Template: Mark duplicate alignments using :script:`samtools markdup`.
 	
 	Template I/O::
 	
-		inputs = {}
-		outputs = {}
+		inputs = {'alignment': alignment_file}
+		outputs = {'markdup': *.markdup.bam, 'bai': *.markdup.bam.bai, 'stats': *.markdup.bam.markdupstats}
 	
-	:param
+	:param str alignment_file:
+		Path to input alignment file.
+	:param str sample_name:
+		Name of sample.
+	:param str output_directory:
+		Path to output directory.
 	"""
 	inputs = {'alignment': alignment_file}
 	outputs = {'markdup': f'{output_directory}/alignment/{sample_name}/{sample_name}.markdup.bam',
@@ -482,14 +549,19 @@ def mark_duplicates_samtools(alignment_file: str, sample_name: str, output_direc
 
 def extract_unmapped_reads(alignment_file: str, sample_name: str, output_directory: str):
 	"""
-	Template: Extract unmapped reads from alignment using flag value 4.
+	Template: Extract unmapped reads from alignment based on bit-flag value 4.
 	
 	Template I/O::
 	
-		inputs = {}
-		outputs = {}
+		inputs = {'alignment': alignment_file}
+		outputs = {'unmapped': *.unmapped.bam, 'bai': *.unmapped.bam.bai}
 	
-	:param
+	:param str alignment_file:
+		Path to input alignment file.
+	:param str sample_name:
+		Name of sample.
+	:param str output_directory:
+		Path to output directory.
 	"""
 	inputs = {'alignment': alignment_file}
 	outputs = {'unmapped': f'{output_directory}/{sample_name}/{sample_name}.unmapped.bam',
@@ -538,16 +610,20 @@ def samtools_stats(alignment_file: str, output_directory: str):
 	
 	Template I/O::
 	
-		inputs = {}
-		outputs = {}
+		inputs = {'alignment': alignment_file}
+		outputs = {'stats': [*.idxstats, *.flagstat, *.coverage, *.stats]}
 	
-	:param
+	:param str alignment_file:
+		Path to input alignment file.
+	:param str output_directory:
+		Path to output directory.
 	"""
 	inputs = {'alignment': alignment_file}
 	outputs = {'stats': [f'{output_directory}/{os.path.basename(alignment_file)}.idxstats',
 						 f'{output_directory}/{os.path.basename(alignment_file)}.flagstat',
 						 f'{output_directory}/{os.path.basename(alignment_file)}.coverage',
 						 f'{output_directory}/{os.path.basename(alignment_file)}.stats']}
+	protect = outputs['stats']
 	options = {
 		'cores': 18,
 		'memory': '40g',
@@ -593,7 +669,7 @@ def samtools_stats(alignment_file: str, output_directory: str):
 	echo "END: $(date)"
 	echo "$(jobinfo "$SLURM_JOBID")"
 	"""
-	return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+	return AnonymousTarget(inputs=inputs, outputs=outputs, protect=protect, options=options, spec=spec)
 
 def samtools_filter(alignment_file: str, sample_name: str, output_directory: str, flags_excluded: int | None = 3844, flags_required: int | None = None, min_mq: int = 20):
 	"""
@@ -601,10 +677,21 @@ def samtools_filter(alignment_file: str, sample_name: str, output_directory: str
 	
 	Template I/O::
 	
-		inputs = {}
-		outputs = {}
+		inputs = {'alignment': alignment_file}
+		outputs = {'filtered': *.filtered.bam, 'bai': *.filtered.bam.bai}
 	
-	:param
+	:param str alignment_file:
+		PAth to input alignment file.
+	:param str sample_name:
+		Name of sample.
+	:param str output_directory:
+		Path to output directory.
+	:param int | None flags_excluded:
+		Do not output alignments with any of the speciefied bits set in the FLAG field.
+	:param int | None flags_required:
+		Only output alignments with all of the specified bits set in the FLAG field.
+	:param int min_mq:
+		Minimum MAPQ of alignments.
 	"""
 	flags = []
 	if flags_excluded:
@@ -614,6 +701,7 @@ def samtools_filter(alignment_file: str, sample_name: str, output_directory: str
 	inputs = {'alignment': alignment_file}
 	outputs = {'filtered': f'{output_directory}/{sample_name}/{sample_name}.filtered.bam',
 			   'bai': f'{output_directory}/{sample_name}/{sample_name}.filtered.bam.bai'}
+	protect = [outputs['filtered'], outputs['bai']]
 	options = {
 		'cores': 18,
 		'memory': '60g',
@@ -650,23 +738,27 @@ def samtools_filter(alignment_file: str, sample_name: str, output_directory: str
 	echo "END: $(date)"
 	echo "$(jobinfo "$SLURM_JOBID")"
 	"""
-	return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+	return AnonymousTarget(inputs=inputs, outputs=outputs, protect=protect, options=options, spec=spec)
 
-def qc_qualimap(alignment_file: str, sample_name: str, output_directory: str):
+def qc_qualimap(alignment_file: str, output_directory: str):
 	"""
-	Template: Runs :script:`qualimap` on alignment file.
+	Template: Run :script:`qualimap` on alignment file.
 	
 	Template I/O::
 	
-		inputs = {}
-		outputs = {}
+		inputs = {'alignment': alignment_file}
+		outputs = {'pdf': report.pdf, 'html': qualimapReport.html, 'raw':genome_results.txt}
 	
-	:param
+	:param str alignment_file:
+		PAth to input alignment file.
+	:param str output_directory:
+		PAth to output directory.
 	"""
 	inputs = {'alignment': alignment_file}
 	outputs = {'pdf': f'{output_directory}/report.pdf',
 			   'html': f'{output_directory}/qualimapReport.html',
 			   'raw': f'{output_directory}/genome_results.txt'}
+	protect = [outputs['pdf'], outputs['html'], outputs['raw']]
 	options = {
 		'cores': 32,
 		'memory': '300g',
@@ -699,23 +791,27 @@ def qc_qualimap(alignment_file: str, sample_name: str, output_directory: str):
 	echo "END: $(date)"
 	echo "$(jobinfo "$SLURM_JOBID")"
 	"""
-	return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+	return AnonymousTarget(inputs=inputs, outputs=outputs, protect=protect, options=options, spec=spec)
 
-def qualimap_multi(dataset: list, output_directory: str, filename: str):
+def qualimap_multi(dataset: list, output_directory: str):
 	"""
 	Template: Compares QC report from multiple runs of :script:`qualimap`.
 	
 	Template I/O::
 	
-		inputs = {}
-		outputs = {}
+		inputs = {'raw': [*]}
+		outputs = {'pdf': report.pdf, 'html': multisampleBAMQcReport.html}
 	
-	:param
+	:param list dataset:
+		List of paths to bamqc folders.
+	:param str output_directory:
+		Path to output directory.
 	"""
 	dataset_tabular = '\n'.join(['\t'.join(i) for i in dataset])
 	inputs = {'raw': [f'{i[1]}/genome_results.txt' for i in dataset]}
 	outputs = {'pdf': f'{output_directory}/report.pdf',
 			   'html': f'{output_directory}/multisampleBamQcReport.html'}
+	protect = [outputs['pdf'], outputs['html']]
 	options = {
 		'cores': 32,
 		'memory': '300g',
@@ -746,4 +842,4 @@ def qualimap_multi(dataset: list, output_directory: str, filename: str):
 	echo "END: $(date)"
 	echo "$(jobinfo "$SLURM_JOBID")"
 	"""
-	return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)
+	return AnonymousTarget(inputs=inputs, outputs=outputs, protect=protect, options=options, spec=spec)
